@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassManager.Api", "ClassMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassManager.Shared", "ClassManager.Shared\ClassManager.Shared.csproj", "{AD755955-CAB8-61B1-1D41-CCD0C168F3D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassManager.Web", "ClassManager.Web\ClassManager.Web.csproj", "{9CA33D21-213C-6365-3860-BFD12EA77A7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,11 +22,15 @@ Global
 		{AD755955-CAB8-61B1-1D41-CCD0C168F3D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD755955-CAB8-61B1-1D41-CCD0C168F3D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD755955-CAB8-61B1-1D41-CCD0C168F3D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA33D21-213C-6365-3860-BFD12EA77A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA33D21-213C-6365-3860-BFD12EA77A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA33D21-213C-6365-3860-BFD12EA77A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA33D21-213C-6365-3860-BFD12EA77A7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E6673133-E71B-46DD-82E3-792FC5FC19DC}
+		SolutionGuid = {B362A3D0-21DE-4F34-91CD-F51A340ED459}
 	EndGlobalSection
 EndGlobal

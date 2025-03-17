@@ -1,0 +1,107 @@
+﻿@page "/department/selection"
+@using System.ComponentModel.DataAnnotations
+@inject IDepartmentApi DepartmentApi
+@inject NavigationManager NavigationManager
+
+<h3>Select Subject</h3>
+
+@if (isLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="selection" OnValidSubmit="OnSubmitAsync">
+        <DataAnnotationsValidator />
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <InputSelect id="subject" @bind-Value="selection.SubjectId" class="form-control">
+                <option value="">-- Select Subject --</option>
+                @foreach (var subject in subjects)
+                {
+                    <option value="@subject.Id">@subject.Subject</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="() => selection.SubjectId" />
+        </div>
+
+        <div class="mb-3">
+            <label for="accessCode" class="form-label">Access Code</label>
+            <InputText id="accessCode" @bind-Value="selection.AccessCode" class="form-control" />
+            <ValidationMessage For="() => selection.AccessCode" />
+        </div>
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <p class="text-danger">@ErrorMessage</p>
+        }
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </EditForm>
+}
+
+@code {
+    private bool isLoading = true;
+    private string? ErrorMessage;
+    private DepartmentDto[] subjects = Array.Empty<DepartmentDto>();
+    private SubjectSelection selection = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            subjects = await DepartmentApi.GetSubjectsAsync();
+            Console.WriteLine($"Loaded Subjects: {string.Join(", ", subjects.Select(s => $"{s.Id}-{s.Subject}"))}");
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Failed to load subjects: {ex.Message}";
+            subjects = Array.Empty<DepartmentDto>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task OnSubmitAsync()
+    {
+        ErrorMessage = null;
+
+        try
+        {
+            var dto = new ValidateSubjectDto
+                {
+                    SubjectId = selection.SubjectId, 
+                    AccessCode = selection.AccessCode
+                };
+
+            Console.WriteLine($"Sending DTO: SubjectId = {dto.SubjectId}, AccessCode = {dto.AccessCode}");
+
+            bool isValid = await DepartmentApi.ValidateSubjectAccessAsync(dto);
+
+            Console.WriteLine($"API Response: {isValid}");
+
+            if (!isValid)
+            {
+                ErrorMessage = "Invalid subject or access code.";
+                return;
+            }
+
+            NavigationManager.NavigateTo($"/department/dashboard?departmentId={selection.SubjectId}");
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    private class SubjectSelection
+    {
+        [Required]
+        public int SubjectId { get; set; } 
+        [Required]
+        [MaxLength(10)]
+        public string AccessCode { get; set; } = string.Empty;
+    }
+}
