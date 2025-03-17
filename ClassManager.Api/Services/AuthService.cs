@@ -5,8 +5,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using ClassManager.Api.Data;
 using ClassManager.Api.Data.Entities;
-using ClassManager.Api.Data.Enums;
-using ClassManager.Api.Data.DTOs;
+using ClassManager.Shared;
+using ClassManager.Shared.DTOs;
 
 namespace ClassManager.Api.Services
 {

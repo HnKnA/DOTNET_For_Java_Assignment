@@ -1,4 +1,4 @@
-﻿namespace ClassManager.Api.Data.Enums
+﻿namespace ClassManager.Shared
 {
     public enum UserRole
     {

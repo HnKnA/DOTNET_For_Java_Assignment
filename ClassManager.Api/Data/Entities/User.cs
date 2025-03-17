@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ClassManager.Api.Data.Enums;
+using ClassManager.Shared;
 
 namespace ClassManager.Api.Data.Entities
 {

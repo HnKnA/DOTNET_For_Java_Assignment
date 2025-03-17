@@ -1,5 +1,5 @@
-﻿using ClassManager.Api.Data.Enums;
-using ClassManager.Api.Data.DTOs;
+﻿using ClassManager.Shared;
+using ClassManager.Shared.DTOs;
 using ClassManager.Api.Data;
 using Microsoft.EntityFrameworkCore;
 

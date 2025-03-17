@@ -1,4 +1,4 @@
-﻿namespace ClassManager.Api.Data.DTOs
+﻿namespace ClassManager.Shared.DTOs
 {
     public class UserDto
     {

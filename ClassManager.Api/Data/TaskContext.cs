@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ClassManager.Api.Data.Entities;
-using ClassManager.Api.Data.Enums;
+using ClassManager.Shared;
 
 namespace ClassManager.Api.Data
 {

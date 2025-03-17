@@ -1,6 +1,6 @@
 ﻿using ClassManager.Api.Data.Entities;
 using ClassManager.Api.Data;
-using ClassManager.Api.Data.DTOs;
+using ClassManager.Shared.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassManager.Api.Services

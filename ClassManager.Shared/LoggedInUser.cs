@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Text.Json;
 
-namespace ClassManager.Api.Data.Enums
+namespace ClassManager.Shared
 {
     public record LoggedInUser(int Id, string Name, string Role, string Token)
     {

@@ -1,6 +1,6 @@
 ﻿using ClassManager.Api.Services;
-using ClassManager.Api.Data.Enums;
-using ClassManager.Api.Data.DTOs;
+using ClassManager.Shared;
+using ClassManager.Shared.DTOs;
 
 namespace ClassManager.Api.Endpoints
 {

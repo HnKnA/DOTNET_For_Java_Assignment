@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using ClassManager.Api.Data;
-using ClassManager.Api.Data.Entities;
 using ClassManager.Api.Endpoints;
 using ClassManager.Api.Services;
+using ClassManager.Api.Data;
+using ClassManager.Api.Data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
