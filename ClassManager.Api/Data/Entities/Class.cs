@@ -9,11 +9,11 @@ namespace ClassManager.Api.Data.Entities
         public int Id { get; set; }
 
         [MaxLength(100)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         public int DepartmentId { get; set; } 
 
         [ForeignKey(nameof(DepartmentId))]
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
     }
 }

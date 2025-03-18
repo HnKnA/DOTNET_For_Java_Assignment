@@ -5,8 +5,8 @@ namespace ClassManager.Shared.DTOs
     public class LoginDto
     {
         [Required, EmailAddress, DataType(DataType.EmailAddress)]
-        public string UserName { get; set; }
+        public required string UserName { get; set; } = string.Empty;
         [Required]  
-        public string Password { get; set; }
+        public required string Password { get; set; } = string.Empty;
     }
 }

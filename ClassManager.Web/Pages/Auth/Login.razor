@@ -66,7 +66,7 @@
 </div>
 
 @code {
-    private LoginDto _login = new();
+    private LoginDto _login = new() { UserName = "", Password = "" };
     private bool _isBusy;
     private string? _errror;
 

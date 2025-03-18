@@ -50,7 +50,6 @@
                     <div class="mb-3">
                         <label class="form-label">Role: </label>
                         <InputSelect @bind-Value="_model.Role" class="form-control">
-                            <select id="select">Select Role</select>
                             <option value="Manager">Manager</option>
                             <option value="Department">Department</option>
                         </InputSelect>
@@ -88,7 +87,7 @@
 }
 
 @code {
-    private RegisterDto _model = new();
+    private RegisterDto _model = new() { Role = "Manager" };
     private bool _isBusy;
     private string? _error;
     private bool ShowSuccessAlert;

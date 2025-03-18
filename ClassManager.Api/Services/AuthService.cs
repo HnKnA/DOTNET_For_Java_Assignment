@@ -33,6 +33,11 @@ namespace ClassManager.Api.Services
                 return new AuthResponseDto(default, "Invalid username");
             }
 
+            if (string.IsNullOrEmpty(user.PasswordHash))
+            {
+                return new AuthResponseDto(default, "Password is not set for this user");
+            }
+
             var passwordResult = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, login.Password);
             if (passwordResult == PasswordVerificationResult.Failed)
             {
@@ -83,7 +88,7 @@ namespace ClassManager.Api.Services
                 new Claim(ClaimTypes.Role, user.Role),
             };
 
-            var secretKey = config.GetValue<string>("Jwt:Secret");
+            var secretKey = config.GetValue<string>("Jwt:Secret") ?? throw new InvalidOperationException("JWT Secret is not set");
             var symmetricKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secretKey));
             var signCred = new SigningCredentials(symmetricKey, SecurityAlgorithms.HmacSha256);
 

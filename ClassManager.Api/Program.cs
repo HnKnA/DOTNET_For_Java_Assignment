@@ -30,7 +30,7 @@ builder.Services.AddAuthentication(options =>
 })
     .AddJwtBearer(options =>
     {
-        var secretKey = builder.Configuration.GetValue<string>("Jwt:Secret");
+        var secretKey = builder.Configuration.GetValue<string>("Jwt:Secret") ?? throw new InvalidOperationException("Jwt:Secret is missing from configuration.");
         var symmetricKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secretKey));
         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
@@ -47,7 +47,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(p =>
     {
-        var allowedOriginsStr = builder.Configuration.GetValue<string>("AllowedOrigins");
+        var allowedOriginsStr = builder.Configuration.GetValue<string>("AllowedOrigins") ?? string.Empty;
         var allowedOrigins = allowedOriginsStr.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
         p.WithOrigins(allowedOrigins)
          .AllowAnyHeader()
