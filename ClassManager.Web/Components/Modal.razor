@@ -22,11 +22,11 @@
 
 @code {
     [Parameter, EditorRequired]
-    public string Title { get; set; }
+    public string? Title { get; set; }
     [Parameter]
     public ModalSize Size { get; set; } = ModalSize.Default;
     [Parameter, EditorRequired]
-    public RenderFragment ChildContent { get; set; }
+    public RenderFragment? ChildContent { get; set; }
     [Parameter]
 
     public EventCallback OnActionButtonClick { get; set; }

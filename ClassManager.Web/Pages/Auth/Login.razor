@@ -94,7 +94,14 @@
             //set the login token in some storage
             //Navigate to Protected Page
             var loggedInUser = authResponse.User;
-            await quiz.SetLoginAsync(loggedInUser);
+            if (loggedInUser != null)
+            {
+                await quiz.SetLoginAsync(loggedInUser);
+            }
+            else
+            {
+                _errror = "Login failed: User information is missing.";
+            }
             navigation.NavigateTo("/");
 
         }

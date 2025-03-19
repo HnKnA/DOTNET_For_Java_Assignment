@@ -12,7 +12,7 @@ namespace ClassManager.Web.Services.Auth
     {
         private const string AuthType = "quiz-auth";
         private const string UserDataKey = "udata";
-        private Task<AuthenticationState> _stateTask;
+        private Task<AuthenticationState> _stateTask = Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
         private readonly IJSRuntime _js;
         private readonly NavigationManager _nav;
 
@@ -26,7 +26,7 @@ namespace ClassManager.Web.Services.Auth
         public override Task<AuthenticationState> GetAuthenticationStateAsync() =>
               _stateTask;
 
-        public LoggedInUser User { get; private set; }
+        public LoggedInUser? User { get; private set; }
         public bool IsLoggedIn => User?.Id > 0;
         public async Task SetLoginAsync(LoggedInUser user)
         {
@@ -74,6 +74,7 @@ namespace ClassManager.Web.Services.Auth
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -108,7 +109,7 @@ namespace ClassManager.Web.Services.Auth
 
         private void SetAuthStateTask()
         {
-            if (IsLoggedIn)
+            if (IsLoggedIn && User != null)
             {
                 var claims = User.ToClaims();
 
