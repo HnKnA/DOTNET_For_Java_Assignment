@@ -15,7 +15,7 @@
     </Authorizing>
     <NotAuthorized><p>Not authorized..!!</p></NotAuthorized>
     <Authorized>
-        <p>Authorized: @context.User.Claims.FirstOrDefault(n => n.Type == ClaimTypes.Name)?.Value</p>
+        <p>You are an authorized user: @context.User.Claims.FirstOrDefault(n => n.Type == ClaimTypes.Name)?.Value</p>
     </Authorized>
 </AuthorizeView>
 
